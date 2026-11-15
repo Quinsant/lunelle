@@ -1,0 +1,17 @@
+[package]
+name = "lunelle-aom"
+description = "Application object model, components, events, and accessibility for Lunelle."
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = ["base_component"]
+base_component = []
+
+[dependencies]
+lunelle-core.workspace = true
+lunelle-css.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+lunelle-macros.workspace = true

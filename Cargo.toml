@@ -1,0 +1,45 @@
+[package]
+name = "lunelle"
+description = "A Rust framework for building native interfaces with components and CSS."
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+resolver = "3"
+members = [".", "crates/application", "crates/core", "crates/css", "crates/aom", "crates/macros"]
+
+[workspace.dependencies]
+accesskit = "0.25.2"
+accesskit_winit = "0.34.2"
+thiserror = "2"
+crossbeam-channel = "0.5"
+rayon = "1.10"
+tokio = { version = "1.48", features = ["rt-multi-thread", "sync", "time"] }
+cssparser = "0.38"
+syn = { version = "3", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+bytemuck = { version = "1.21", features = ["derive"] }
+cosmic-text = "0.19"
+glyphon = "0.12"
+image = { version = "=0.25.10", default-features = false }
+pollster = "1"
+wgpu = "30"
+winit = "0.30"
+taffy = { version = "0.15.1", default-features = false, features = ["std", "taffy_tree", "flexbox", "grid", "block_layout"] }
+lunelle-application = { path = "crates/application", default-features = false }
+lunelle-core = { path = "crates/core" }
+lunelle-css = { path = "crates/css" }
+lunelle-aom = { path = "crates/aom", default-features = false }
+lunelle-macros = { path = "crates/macros" }
+
+[features]
+default = ["base_component"]
+base_component = ["lunelle-application/base_component"]
+
+[dependencies]
+lunelle-application = { path = "crates/application", default-features = false, features = ["windowed"] }
+
+[[example]]
+name = "counter"
+required-features = ["base_component"]

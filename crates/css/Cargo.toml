@@ -1,0 +1,23 @@
+[package]
+name = "lunelle-css"
+description = "CSS parsing, style computation, and layout and rendering support for Lunelle."
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cssparser.workspace = true
+lunelle-core.workspace = true
+lunelle-macros.workspace = true
+thiserror.workspace = true
+bytemuck = { workspace = true, optional = true }
+wgpu = { workspace = true, optional = true }
+glyphon = { workspace = true, optional = true }
+taffy = { workspace = true, optional = true }
+
+[dev-dependencies]
+pollster.workspace = true
+
+[features]
+default = ["render-wgpu", "layout-taffy"]
+render-wgpu = ["dep:bytemuck", "dep:wgpu", "dep:glyphon"]
+layout-taffy = ["dep:taffy"]

@@ -1,0 +1,19 @@
+[package]
+name = "lunelle-core"
+description = "Core runtime, windowing, events, and resources for Lunelle."
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+thiserror.workspace = true
+crossbeam-channel.workspace = true
+tokio.workspace = true
+winit = { workspace = true, optional = true }
+wgpu = { workspace = true, optional = true }
+bytemuck = { workspace = true, optional = true }
+image.workspace = true
+
+[features]
+default = []
+window-winit = ["dep:winit"]
+render-wgpu = ["dep:bytemuck", "dep:wgpu", "window-winit"]

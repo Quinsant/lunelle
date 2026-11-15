@@ -1,0 +1,27 @@
+[package]
+name = "lunelle-application"
+description = "Application integration for Lunelle components, styles, windows, and rendering."
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lunelle-core.workspace = true
+lunelle-css.workspace = true
+lunelle-aom.workspace = true
+lunelle-macros.workspace = true
+thiserror.workspace = true
+pollster.workspace = true
+wgpu.workspace = true
+winit.workspace = true
+taffy.workspace = true
+bytemuck.workspace = true
+
+[features]
+base_component = ["lunelle-aom/base_component"]
+default = ["base_component", "windowed"]
+windowed = [
+	"lunelle-core/window-winit",
+	"lunelle-core/render-wgpu",
+	"lunelle-css/render-wgpu",
+	"lunelle-css/layout-taffy",
+]

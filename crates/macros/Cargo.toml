@@ -1,0 +1,15 @@
+[package]
+name = "lunelle-macros"
+description = "Procedural macros for Lunelle components and views."
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn.workspace = true
+quote.workspace = true
+proc-macro2.workspace = true
+proc-macro-crate = "3"
+
